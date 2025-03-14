@@ -1,17 +1,55 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../PaheliWeb/paheli.css";
 import { FaSatelliteDish, FaSearch } from "react-icons/fa";
 import { FaCirclePlay, FaUsersLine } from "react-icons/fa6";
 import { GiTwirlyFlower } from "react-icons/gi";
 import { Button } from "react-bootstrap";
 
+const images = [
+  {
+    id: 1,
+    src: "/paheliassets/asset 5.jpeg",
+    title: "Data Loss Prevention (DLP)",
+    description:
+      "This includes implementing strategies and tools to prevent sensitive data...",
+  },
+  {
+    id: 2,
+    src: "/paheliassets/asset 6.jpeg",
+    title: "Cloud Security",
+    description:
+      "Ensuring security in cloud environments through encryption and access controls...",
+  },
+  {
+    id: 3,
+    src: "/paheliassets/asset 7.jpeg",
+    title: "Network Security",
+    description:
+      "Protecting networks from unauthorized access and cyber threats...",
+  },
+  {
+    id: 4,
+    src: "/paheliassets/asset 8.jpeg",
+    title: "Application Security",
+    description:
+      "Implementing security measures in application development to mitigate vulnerabilities...",
+  },
+  {
+    id: 5,
+    src: "/paheliassets/asset 9.jpeg",
+    title: "Endpoint Security",
+    description:
+      "Securing devices like laptops and mobile phones from potential threats...",
+  },
+];
 const PaheliWeb = () => {
+  const [activeId, setActiveId] = useState(images[images.length - 1].id);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
   const elementRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       if (elementRef.current) {
-        console.log("Scroll position:", window.scrollY); // Debugging log
         if (window.scrollY > 100) {
           elementRef.current.classList.add("sticky");
         } else {
@@ -28,6 +66,16 @@ const PaheliWeb = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  console.log("active_id", activeId);
 
   return (
     <>
@@ -189,7 +237,7 @@ const PaheliWeb = () => {
                 ensuring the protection of privacy...
               </p>
               <div className="right_content">
-                <div>
+                <div className="users_div">
                   <FaUsersLine size={50} />
                 </div>
                 <div>
@@ -201,7 +249,7 @@ const PaheliWeb = () => {
                 </div>
               </div>
               <div className="right_content">
-                <div>
+                <div className="users_div">
                   <FaSatelliteDish size={50} />
                 </div>
                 <div>
@@ -219,6 +267,178 @@ const PaheliWeb = () => {
           </div>
         </div>
       </section>
+      {/* our services section */}
+      <div>
+        <div className="container">
+          <div className="sevices_heading">
+            <p>our services</p>
+            <h2>From Your Cyber Security Services.</h2>
+          </div>
+          <div className="row">
+            <div className="col-lg-4 col-sm-12 col-md-6 services_content">
+              <div>
+                <div>
+                  <img src="/paheliassets/asset 25.svg" alt="service" />
+                </div>
+                <h3>Endpoint Security</h3>
+                <p>
+                  This service focuses on securing end-user devices like
+                  laptops, desktops, and mobile devices from cybersecurity
+                  threats.
+                </p>
+                <a href="#">Read More</a>
+              </div>
+            </div>
+            <div className="col-lg-4 col-sm-12 col-md-6 services_content">
+              <div>
+                <div>
+                  <img src="/paheliassets/asset 26.svg" alt="service" />
+                </div>
+                <h3>Endpoint Security</h3>
+                <p>
+                  This service focuses on securing end-user devices like
+                  laptops, desktops, and mobile devices from cybersecurity
+                  threats.
+                </p>
+                <a href="#">Read More</a>
+              </div>
+            </div>{" "}
+            <div className="col-lg-4 col-sm-12 col-md-6 services_content">
+              <div>
+                <div>
+                  <img src="/paheliassets/asset 27.svg" alt="service" />
+                </div>
+                <h3>Endpoint Security</h3>
+                <p>
+                  This service focuses on securing end-user devices like
+                  laptops, desktops, and mobile devices from cybersecurity
+                  threats.
+                </p>
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-4 col-sm-12 col-md-6 services_content">
+              <div>
+                <div>
+                  <img src="/paheliassets/asset 28.svg" alt="service" />
+                </div>
+                <h3>Endpoint Security</h3>
+                <p>
+                  This service focuses on securing end-user devices like
+                  laptops, desktops, and mobile devices from cybersecurity
+                  threats.
+                </p>
+                <a href="#">Read More</a>
+              </div>
+            </div>
+            <div className="col-lg-4 col-sm-12 col-md-6 services_content">
+              <div>
+                <div>
+                  <img src="/paheliassets/asset 29.svg" alt="service" />
+                </div>
+                <h3>Endpoint Security</h3>
+                <p>
+                  This service focuses on securing end-user devices like
+                  laptops, desktops, and mobile devices from cybersecurity
+                  threats.
+                </p>
+                <a href="#">Read More</a>
+              </div>
+            </div>{" "}
+            <div className="col-lg-4 col-sm-12 col-md-6 services_content">
+              <div>
+                <div>
+                  <img src="/paheliassets/asset 30.svg" alt="service" />
+                </div>
+                <h3>Endpoint Security</h3>
+                <p>
+                  This service focuses on securing end-user devices like
+                  laptops, desktops, and mobile devices from cybersecurity
+                  threats.
+                </p>
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* our products section */}
+      <div className="gallery-container">
+        <div className="container">
+          <p>our projects</p>
+          <div className="projects-header">
+            <h2>
+              Feat to Celebrate: Showcasing Some <br /> of Our Proud Projects.
+            </h2>
+            <a className="project-button" href="#">
+              view all projects
+            </a>
+          </div>
+          <ul className="image-projects">
+            {images.map((image) => (
+              <li
+                key={image.id}
+                className={`li-images ${
+                  isLargeScreen
+                    ? activeId === image.id
+                      ? "wide"
+                      : "normal"
+                    : "default"
+                }`}
+                onMouseEnter={() => isLargeScreen && setActiveId(image.id)}
+                // onMouseLeave={() =>
+                //   isLargeScreen && setActiveId(images[images.length - 1].id)
+                // }
+              >
+                <span>
+                  <img
+                    src={image.src}
+                    alt="project_images"
+                    style={{
+                      width: "100%",
+                      height: "300px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </span>
+                <div
+                  className="contain"
+                  style={{
+                    opacity:
+                      isLargeScreen && activeId === image.id
+                        ? 1
+                        : isLargeScreen
+                        ? 0
+                        : 1,
+                    transition: "opacity 0.3s ease-in-out",
+                  }}
+                >
+                  <div className="details">
+                    <h3>
+                      <a
+                        href="#"
+                        style={{
+                          textDecoration: "none",
+                          color: "white",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                        onMouseEnter={(e) => (e.target.style.color = "blue")}
+                        onMouseLeave={(e) => (e.target.style.color = "white")}
+                      >
+                        {image.title}
+                      </a>
+                    </h3>
+                    <p>{image.description}</p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </>
   );
 };
