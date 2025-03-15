@@ -383,3 +383,35 @@ body {
     color: black;
   }
 }
+
+/* FAQs section */
+.faq_left{
+  display: flex;
+  gap: 10px;
+  /* margin-right: 20px; */
+}
+
+.faq_emoji{
+  border:unset;
+  background-color: #2e3241;
+  border-radius: 30px;
+  padding: 25px;
+  margin-right: 40px;
+}
+
+
+.main_faq_wrapper{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+}
+.faq_wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid gray;
+}
+.faq_wrapper:first-child{
+  border-top: 1px solid gray;
+}

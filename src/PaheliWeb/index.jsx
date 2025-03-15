@@ -4,6 +4,9 @@ import { FaSatelliteDish, FaSearch } from "react-icons/fa";
 import { FaCirclePlay, FaUsersLine } from "react-icons/fa6";
 import { GiTwirlyFlower } from "react-icons/gi";
 import { Button } from "react-bootstrap";
+import FAQ from "../Faq";
+import { FiPlus } from "react-icons/fi";
+import CountUp, { useCountUp } from "react-countup";
 
 const images = [
   {
@@ -42,9 +45,31 @@ const images = [
       "Securing devices like laptops and mobile phones from potential threats...",
   },
 ];
+
+const faqs = [
+  {
+    question: "What is React?",
+    answer: "React is a JavaScript library for building user interfaces.",
+  },
+  {
+    question: "What is a component?",
+    answer: "Components are the building blocks of a React application.",
+  },
+  {
+    question: "What is React?",
+    answer: "React is a JavaScript library for building user interfaces.",
+  },
+  {
+    question: "What is a component?",
+    answer: "Components are the building blocks of a React application.",
+  },
+];
+
 const PaheliWeb = () => {
   const [activeId, setActiveId] = useState(images[images.length - 1].id);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+  const [openIndex, setOpenIndex] = useState(null);
+
   const elementRef = useRef(null);
 
   useEffect(() => {
@@ -75,8 +100,16 @@ const PaheliWeb = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log("active_id", activeId);
+  const toggleAnswer = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
+  // useCountUp({
+  //   ref: "counter",
+  //   end: 1234567,
+  //   enableScrollSpy: true,
+  //   scrollSpyDelay: 1000,
+  // });
   return (
     <>
       <div className="top_header">
@@ -439,6 +472,69 @@ const PaheliWeb = () => {
           </ul>
         </div>
       </div>
+
+      {/* Faq section */}
+      <div>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6">
+              <p>Faqs</p>
+              <h2>
+                A Dedication to Supporting All
+                <br /> Aspects of Your Life.
+              </h2>
+              <p>Can’t find what you are looking for?</p>
+              <h3 style={{ color: "white" }}>
+                Let's Talk: Engage with Us in a Conversation Tailored Just for
+                You.
+              </h3>
+              <div className="faq_left">
+                <div className="faq_emoji">
+                  <img src="/paheliassets/asset 31.svg" alt="questionmark" />
+                </div>
+                <div>
+                  <img src="/paheliassets/asset 32.svg" alt="arrow" />
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div>
+                {faqs.map((faq, index) => (
+                  <>
+                    <div key={index} className="faq_wrapper">
+                      <div className="heading_div">
+                        <h6
+                          onClick={() => toggleAnswer(index)}
+                          style={{ cursor: "pointer", color: "white" }}
+                        >
+                          {faq.question}
+                        </h6>
+                      </div>
+                      <div>
+                        <FiPlus
+                          onClick={() => toggleAnswer(index)}
+                          style={{ cursor: "pointer", color: "white" }}
+                        />
+                      </div>
+                    </div>
+                    {openIndex === index && <span>{faq.answer}</span>}
+                  </>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* count section */}
+      <div className="content" />
+      <CountUp end={100} enableScrollSpy />
+
+      <CountUp end={1050} enableScrollSpy />
+      <CountUp end={1060} enableScrollSpy />
+      <CountUp end={200} enableScrollSpy />
+
+      {/* <span id="counter" /> */}
     </>
   );
 };
